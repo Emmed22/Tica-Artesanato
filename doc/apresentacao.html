@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Tica Artesanato · Apresentação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500;1,600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ─────────────────────────────────────────────────── */
+:root {
+  --cream:   #FBEAF3;
+  --paper:   #FFF7FB;
+  --navy:    #5B2A63;
+  --coral:   #E0729A;
+  --gold:    #D98F5F;
+  --green:   #5FA282;
+  --red:     #C0435F;
+  --ink:     #4A2B4F;
+  --muted:   #8B7A8E;
+  --line:    #F0D6E4;
+  --soft-blue:   #EDEAFA;
+  --soft-coral:  #FCE8F0;
+  --soft-gold:   #FBEEE0;
+  --soft-green:  #E8F3EC;
+  --sans: 'Poppins', sans-serif;
+  --serif: 'Lora', serif;
+}
+
+/* ── Reset / base ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-family: var(--sans); color: var(--ink); }
+body { background: #E8D5E5; }
+
+/* ── Slide container ─────────────────────────────────────────── */
+.slide {
+  width: 794px;
+  min-height: 561px;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  margin: 28px auto;
+  box-shadow: 0 8px 40px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+  page-break-after: always;
+  break-after: page;
+}
+
+/* ── Barra tricolor superior ─────────────────────────────────── */
+.slide::before {
+  content: '';
+  display: block;
+  height: 6px;
+  background: linear-gradient(90deg, var(--navy) 0 34%, var(--coral) 34% 62%, var(--gold) 62% 100%);
+  flex: none;
+}
+
+/* ── Rodapé fixo ─────────────────────────────────────────────── */
+.slide-footer {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+}
+.footer-label { font-size: 9px; color: var(--muted); font-weight: 500; }
+.footer-label b { color: var(--navy); }
+.page-badge { background: var(--navy); color: white; font-size: 9px; font-weight: 700; padding: 2px 9px; border-radius: 99px; letter-spacing: .04em; }
+
+/* ── Área de conteúdo ────────────────────────────────────────── */
+.slide-body { flex: 1; padding: 22px 26px 36px; position: relative; }
+
+/* ── Kicker + título padrão ──────────────────────────────────── */
+.kicker { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--coral); display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.kicker.navy { color: var(--navy); }
+h2 { font-size: 26px; font-weight: 700; color: var(--navy); line-height: 1.1; letter-spacing: -.025em; margin-bottom: 6px; }
+.lede { font-size: 11px; color: var(--muted); line-height: 1.55; max-width: 620px; margin-bottom: 16px; }
+
+/* ── Cards genéricos ─────────────────────────────────────────── */
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.card-title { font-size: 11px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.card p, .card li { font-size: 10.5px; color: var(--muted); line-height: 1.5; }
+.card ul { padding-left: 14px; }
+.card ul li { margin-bottom: 3px; }
+
+/* ── Tag / badge ─────────────────────────────────────────────── */
+.tag { display: inline-block; font-size: 8.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 99px; margin-bottom: 8px; }
+.tag-navy  { background: var(--navy);   color: white; }
+.tag-coral { background: var(--coral);  color: white; }
+.tag-gold  { background: var(--gold);   color: var(--navy); }
+.tag-green { background: var(--green);  color: white; }
+.tag-soft  { background: var(--soft-gold); color: var(--navy); border: 1px solid var(--line); }
+
+/* ── Grid helpers ────────────────────────────────────────────── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+
+/* ── Highlight block ─────────────────────────────────────────── */
+.hl { border-left: 4px solid var(--coral); background: var(--soft-coral); border-radius: 0 10px 10px 0; padding: 10px 14px; font-size: 10.5px; color: var(--ink); line-height: 1.5; }
+.hl.green { border-left-color: var(--green); background: var(--soft-green); }
+.hl.gold  { border-left-color: var(--gold);  background: var(--soft-gold); }
+.hl.navy  { border-left-color: var(--navy);  background: var(--soft-blue); }
+.hl b { color: var(--navy); }
+
+/* ── Pill list ───────────────────────────────────────────────── */
+.pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+.pill { background: var(--paper); border: 1px solid var(--line); border-radius: 99px; padding: 4px 11px; font-size: 10px; font-weight: 600; color: var(--navy); }
+.pill.coral { background: var(--soft-coral); color: var(--coral); border-color: #F0B8CE; }
+.pill.green { background: var(--soft-green); color: var(--green); border-color: #A9D9BD; }
+
+/* ── Status flow chips ───────────────────────────────────────── */
+.status-flow { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin-top: 10px; }
+.status-chip { background: var(--paper); border: 1.5px solid var(--navy); border-radius: 8px; padding: 5px 9px; font-size: 9px; font-weight: 700; color: var(--navy); text-align: center; }
+.status-chip.coral { border-color: var(--coral); color: var(--coral); }
+.status-chip.green { border-color: var(--green); color: var(--green); }
+.status-chip.gold  { border-color: var(--gold);  color: #7A4A1E; }
+.status-arrow { font-size: 12px; color: var(--coral); font-weight: 700; }
+
+/* ── Cover slide (01) ────────────────────────────────────────── */
+.cover-body { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 30px 40px 40px; background: linear-gradient(135deg, var(--cream) 60%, #F3D9EC 100%); }
+.cover-eyebrow { font-size: 10px; font-weight: 600; color: var(--coral); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+.cover-title { font-size: 52px; font-weight: 700; color: var(--navy); line-height: 1; letter-spacing: -.04em; margin-bottom: 6px; }
+.cover-sub { font: italic 500 18px/1.3 var(--serif); color: var(--coral); margin-bottom: 20px; }
+.cover-desc { font-size: 11px; color: var(--muted); max-width: 420px; line-height: 1.6; margin-bottom: 20px; }
+.cover-stack { display: flex; gap: 8px; flex-wrap: wrap; }
+.stack-chip { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; font-size: 10px; font-weight: 600; color: var(--navy); }
+.cover-meta { position: absolute; bottom: 40px; right: 32px; text-align: right; }
+.cover-meta .label { font-size: 9px; color: var(--muted); }
+.cover-meta .value { font-size: 14px; font-weight: 700; color: var(--navy); }
+
+/* ── Decorative accent shape ─────────────────────────────────── */
+.cover-accent { position: absolute; top: -30px; right: -30px; width: 240px; height: 240px; border-radius: 50%; background: radial-gradient(circle at 40% 40%, #F6DCEE 0%, transparent 70%); pointer-events: none; }
+
+/* ── Print ───────────────────────────────────────────────────── */
+@media print { body { background: white; } .slide { margin: 0; box-shadow: none; } }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 01 · Capa
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="cover-body">
+    <div class="cover-accent"></div>
+    <div class="cover-eyebrow">🧶 Projeto Integrador · DSM 4º semestre · FATEC</div>
+    <div class="cover-title">Tica<br>Artesanato</div>
+    <div class="cover-sub">Vitrine digital e gestão de encomendas<br>para uma artesã autônoma de crochê</div>
+    <div class="cover-desc">
+      Do caderno de anotações à tela da vitrine — catálogo público, jornada guiada de encomenda,
+      painel administrativo simples e indicadores de demanda, sem tirar da Tica o que ela faz de melhor.
+    </div>
+    <div class="cover-stack">
+      <span class="stack-chip">🅰️ Angular · TypeScript</span>
+      <span class="stack-chip">📱 Ionic</span>
+      <span class="stack-chip">☕ Java · Spring Boot</span>
+      <span class="stack-chip">⚡ PostgreSQL · Supabase</span>
+      <span class="stack-chip">🐍 Python · Analytics</span>
+      <span class="stack-chip">🐳 Docker</span>
+    </div>
+    <div class="cover-meta">
+      <div class="label">Foco da disciplina</div>
+      <div class="value">LGPD · CI/CD</div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">01 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 02 · O problema
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">🔍 Contexto</div>
+    <h2>O problema que motivou o sistema</h2>
+    <p class="lede">A Tica produz tapetes, chinelos, toalhas e panos de prato em crochê — tudo feito à mão. O problema nunca foi a qualidade do trabalho. Foi que ninguém fora do bairro sabia que ele existia.</p>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card">
+        <div class="card-title">📵 Sem presença digital</div>
+        <p>Nenhuma rede social, nenhum site. A única vitrine da Tica é o boca a boca do bairro.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">📓 Tudo no caderno</div>
+        <p>Pedidos, preços e prazos anotados à mão — fácil de perder, difícil de consultar depois.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">📱 Atendimento manual</div>
+        <p>Cliente manda foto pelo celular, a Tica calcula o preço de cabeça e demora pra responder.</p>
+      </div>
+    </div>
+    <div class="hl">
+      <b>O maior incômodo do cliente:</b> depois de pedir, ele fica sem saber em que pé está a encomenda — sem retorno, sem previsão, só espera.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">02 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 03 · Perfis
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">👥 Perfis</div>
+    <h2>Quem usa o sistema</h2>
+    <p class="lede">Só dois perfis — e isso é uma força: significa uma solução enxuta, sem funcionalidade sobrando.</p>
+    <div class="g2">
+      <div class="card">
+        <div class="tag tag-navy">🧑‍🎨 Gestora</div>
+        <div class="card-title">Tica (única usuária admin)</div>
+        <ul>
+          <li>Cadastra e edita produtos, cores e tamanhos</li>
+          <li>Acompanha e atualiza o status dos pedidos</li>
+          <li>Fecha valor e prazo direto no WhatsApp</li>
+          <li>Consulta indicadores de demanda e conversão</li>
+        </ul>
+        <div class="hl navy" style="margin-top:10px;font-size:10px">Pouca afinidade com sistemas complexos — precisa de painel simples, sem curva de aprendizado.</div>
+      </div>
+      <div class="card">
+        <div class="tag tag-coral">🛍️ Cliente final</div>
+        <div class="card-title">Quem busca peças em crochê sob medida</div>
+        <ul>
+          <li>Navega o catálogo por categoria</li>
+          <li>Monta a sacola com cor, tamanho e detalhes — inclusive itens personalizados</li>
+          <li>Cadastra e-mail, entra por link mágico, informa endereço completo</li>
+          <li>Fecha o pedido numa conversa real no WhatsApp</li>
+        </ul>
+        <div class="hl" style="margin-top:10px;font-size:10px">Navega pelo celular, no dia a dia — quer ver o catálogo e já pedir sem fricção.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">03 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 04 · Por que não e-commerce tradicional
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">💡 A decisão mais importante</div>
+    <h2>Por que não um e-commerce tradicional?</h2>
+    <p class="lede">Foi a primeira pergunta que fizemos — e a resposta muda tudo o que vem depois. Um e-commerce comum parte de duas verdades que, aqui, não existem.</p>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="border-left:4px solid var(--coral)">
+        <div class="tag tag-coral">🛒 O que um e-commerce clássico assume</div>
+        <ul>
+          <li>Estoque disponível — item pronto na prateleira</li>
+          <li>Entrega imediata após o pagamento</li>
+          <li>Preço fixo, sem personalização</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left:4px solid var(--green)">
+        <div class="tag tag-green">🧭 A realidade da Tica</div>
+        <ul>
+          <li>Estoque zero — cada peça é sob encomenda</li>
+          <li>Cada item leva cerca de 2 dias de confecção</li>
+          <li>Cor, tamanho e detalhes mudam a cada pedido</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hl gold">
+      <b>Então qual é a solução certa?</b> Uma vitrine digital — o cliente vê o catálogo, monta o pedido do jeito que quer, e o fechamento final acontece numa conversa real com a Tica pelo WhatsApp. O sistema organiza a decisão; a conversa humana fecha o negócio.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">04 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 05 · A solução
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">🧵 A solução</div>
+    <h2>Vitrine digital + WhatsApp</h2>
+    <p class="lede">Quatro passos ligam o catálogo da Tica ao fechamento do pedido — sem exigir que o cliente crie conta, baixe app ou preencha formulário longo.</p>
+    <div class="g4" style="margin-bottom:14px">
+      <div class="card">
+        <div class="tag tag-soft">1 · 🖼️</div>
+        <div class="card-title">Vitrine pública</div>
+        <p>Cliente navega pelo catálogo, filtra por categoria, vê fotos dos produtos.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-soft">2 · 🧺</div>
+        <div class="card-title">Monta a sacola</div>
+        <p>Escolhe peças, cores e tamanhos, informa nome + CEP para dar contexto de entrega.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-soft">3 · ✍️</div>
+        <div class="card-title">Pedido formatado</div>
+        <p>O sistema organiza tudo num resumo claro, já com cidade/bairro resolvidos pelo CEP.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-soft">4 · 💬</div>
+        <div class="card-title">Fecha no WhatsApp</div>
+        <p>Com consentimento do cliente, mensagem pré-pronta chega até a Tica — só falta combinar sinal e prazo.</p>
+      </div>
+    </div>
+    <div style="text-align:center;font:italic 500 11px/1.4 var(--serif);color:var(--coral)">
+      Como uma carreira de crochê: cada passo se apoia no anterior, sem emendas visíveis para quem está do outro lado.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">05 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 06 · CEP do cliente
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">📍 Apoio à decisão de frete</div>
+    <h2>CEP do cliente: apoio à Tica, não cálculo automático</h2>
+    <p class="lede">A Tica é autônoma e ainda não tem logística própria. O sistema não calcula frete sozinho — ele apenas resolve o CEP em cidade/bairro, pra Tica decidir o valor com informação na mão.</p>
+    <div class="g3" style="margin-bottom:12px">
+      <div class="card">
+        <div class="card-title">📍 O que o cliente informa</div>
+        <p>Nome e CEP, no momento de montar a sacola — campos simples, sem endereço completo.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🔎 O que o sistema faz</div>
+        <p>Consulta a API pública ViaCEP e preenche cidade/bairro automaticamente, sem custo de integração.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🧺 O que a Tica recebe</div>
+        <p>Um resumo com a localização aproximada do cliente, pra estimar o frete e combinar o valor pelo WhatsApp.</p>
+      </div>
+    </div>
+    <div class="hl">
+      <b>Isso não contradiz o corte de escopo do frete automático:</b> continuamos sem calcular valor de frete via API de transportadora — isso exigiria peso, dimensões e integração com Correios/SuperFrete. O que entra é só a resolução de endereço, um dado de apoio, não um preço calculado.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">06 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 07 · Jornada antes/depois
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">🗺️ A jornada do cliente</div>
+    <h2>Antes e depois, lado a lado</h2>
+    <p class="lede">O mesmo objetivo — pedir uma peça em crochê — vivido de duas formas bem diferentes.</p>
+    <h3 style="color:var(--coral);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin:6px 0 6px">Hoje (manual)</h3>
+    <div class="status-flow" style="margin-bottom:14px">
+      <div class="status-chip coral">Indicação<br>boca a boca</div><div class="status-arrow">→</div>
+      <div class="status-chip coral">Fotos pelo<br>celular</div><div class="status-arrow">→</div>
+      <div class="status-chip coral">Cálculo de<br>cabeça</div><div class="status-arrow">→</div>
+      <div class="status-chip coral">Caderno de<br>anotações</div>
+    </div>
+    <h3 style="color:var(--green);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin:6px 0 6px">Depois (digital)</h3>
+    <div class="status-flow" style="margin-bottom:14px">
+      <div class="status-chip green">Acessa a<br>vitrine</div><div class="status-arrow">→</div>
+      <div class="status-chip green">Personaliza<br>+ CEP</div><div class="status-arrow">→</div>
+      <div class="status-chip green">Solicita<br>encomenda</div><div class="status-arrow">→</div>
+      <div class="status-chip green">Consente e<br>envia no WhatsApp</div>
+    </div>
+    <div class="hl navy">
+      <b>O que realmente muda:</b> não é só "ficar bonito" — é tirar do cliente o trabalho de descrever o que quer, e tirar da Tica o trabalho de calcular tudo na hora. E o cliente decide, com clareza, o que está sendo compartilhado antes de enviar.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">07 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 08 · Máquina de status
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">📋 Pedidos</div>
+    <h2>O pedido não pode mais "sumir" no WhatsApp</h2>
+    <p class="lede">Antes, depois que o pedido saía pelo WhatsApp, ele podia se perder no meio da conversa. Agora existe um status dentro do sistema — cinco estados fechados, enum no banco de dados.</p>
+    <div class="status-flow" style="margin-bottom:14px">
+      <div class="status-chip">💬<br>RECEBIDO</div>
+      <div class="status-arrow">→</div>
+      <div class="status-chip gold">🧵<br>EM_PRODUCAO</div>
+      <div class="status-arrow">→</div>
+      <div class="status-chip green">🎁<br>PRONTO</div>
+      <div class="status-arrow">→</div>
+      <div class="status-chip green">🚚<br>ENTREGUE</div>
+      <div class="status-arrow" style="color:var(--red)">↗</div>
+      <div class="status-chip coral">❌<br>CANCELADO</div>
+    </div>
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">🔑 Regra</div>
+        <p>A Tica atualiza o status enquanto negocia pelo WhatsApp — o sistema só guarda o retrato do que já foi combinado, não substitui a conversa.</p>
+      </div>
+      <div class="card" style="border-left:4px solid var(--green)">
+        <div class="tag tag-green">✅ Regra dos 5 dias</div>
+        <p>Pedido parado em <code style="font-size:9px">RECEBIDO</code> por 5 dias corridos dispara um e-mail de lembrete para a Tica. A mudança de status continua 100% manual — o e-mail só avisa.</p>
+      </div>
+    </div>
+    <div class="hl" style="margin-top:10px;font-size:10px">
+      <b>Ao mover para EM_PRODUCAO:</b> o sistema exige uma estimativa de prazo (<code style="font-size:9px">estimativa_pronto_em</code>), visível depois para a Tica e para o cliente logado.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">08 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 09 · Arquitetura de software
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">🗂️ Organização do código</div>
+    <h2>Arquitetura de software — a "receita" das pastas</h2>
+    <p class="lede">Cada camada tem uma responsabilidade única, como cada carreira de uma peça em crochê. Isso facilita achar onde mexer quando algo precisa mudar.</p>
+    <div class="g2">
+      <div class="card">
+        <div class="card-title">☕ Backend — Java + Spring Boot <span style="color:var(--muted);font-weight:400">· camadas</span></div>
+        <p style="font-family:monospace;font-size:9.5px;line-height:1.7;color:var(--ink)">
+        com.ticaartesanato<br>
+        ├── config/&nbsp;&nbsp;&nbsp;&nbsp;(segurança, CORS)<br>
+        ├── controller/&nbsp;(requisições HTTP)<br>
+        ├── dto/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(entrada/saída da API)<br>
+        ├── service/&nbsp;&nbsp;(regras de negócio)<br>
+        ├── repository/(acesso ao banco)<br>
+        ├── domain/&nbsp;&nbsp;&nbsp;(Produto, Pedido...)<br>
+        ├── security/&nbsp;&nbsp;(JWT, filtros)<br>
+        └── exception/&nbsp;(tratamento de erros)</p>
+      </div>
+      <div class="card">
+        <div class="card-title">🅰️ Frontend — Angular / Ionic <span style="color:var(--muted);font-weight:400">· por feature</span></div>
+        <p style="font-family:monospace;font-size:9.5px;line-height:1.7;color:var(--ink)">
+        src/app<br>
+        ├── core/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(serviços, guards)<br>
+        ├── shared/&nbsp;&nbsp;&nbsp;(componentes reutil.)<br>
+        ├── features/<br>
+        │&nbsp;&nbsp;├── vitrine/&nbsp;(catálogo público)<br>
+        │&nbsp;&nbsp;├── sacola/&nbsp;&nbsp;(montagem pedido)<br>
+        │&nbsp;&nbsp;├── admin/&nbsp;&nbsp;&nbsp;(painel da Tica)<br>
+        │&nbsp;&nbsp;└── auth/&nbsp;&nbsp;&nbsp;&nbsp;(login admin)<br>
+        └── models/&nbsp;&nbsp;&nbsp;(interfaces)</p>
+      </div>
+    </div>
+    <div class="hl navy" style="margin-top:10px">
+      <b>Por que separar assim:</b> sem camadas, regra de negócio e acesso a banco ficam misturados no mesmo arquivo — qualquer alteração vira risco. Organizar o frontend por feature deixa fácil achar tudo de uma tela só, o que importa numa equipe pequena.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">09 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 10 · Stack tecnológica
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">🛠️ Stack</div>
+    <h2>As ferramentas que escolhemos, e por quê</h2>
+    <p class="lede">Nenhuma tecnologia foi escolhida "porque é popular" — cada uma resolve um problema específico do projeto.</p>
+    <div class="g3">
+      <div class="card"><div class="card-title">🅰️ Angular</div><p>Estrutura robusta pra vitrine web, com TypeScript ajudando a evitar erros antes de rodar.</p></div>
+      <div class="card"><div class="card-title">📱 Ionic</div><p>Reaproveita os componentes Angular pra gerar a versão mobile, sem escrever a tela duas vezes.</p></div>
+      <div class="card"><div class="card-title">☕ Java + Spring Boot</div><p>Framework maduro pra APIs, com segurança e validação já embutidas.</p></div>
+      <div class="card"><div class="card-title">⚡ PostgreSQL + Supabase</div><p>Banco relacional hospedado, sem exigir Postgres local — SQL Editor e Table Editor prontos pro time.</p></div>
+      <div class="card"><div class="card-title">🔑 JWT</div><p>Garante que só a Tica autenticada acesse o painel administrativo, sem guardar sessão no servidor.</p></div>
+      <div class="card"><div class="card-title">🐍 Python</div><p>Linguagem direta pra tratar dados e gerar indicadores de demanda e conversão.</p></div>
+      <div class="card"><div class="card-title">🐳 Docker</div><p>Empacota backend e frontend pra rodar igual em qualquer máquina — evita "na minha funcionava".</p></div>
+      <div class="card"><div class="card-title">📍 ViaCEP</div><p>API pública e gratuita de CEP — resolve cidade/bairro sem custo de integração.</p></div>
+      <div class="card"><div class="card-title">💬 WhatsApp</div><p>Canal que a Tica já domina — evita criar um chat novo do zero.</p></div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">10 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 11 · Banco de dados
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">🗄️ Banco</div>
+    <h2>Modelagem — decisões importantes</h2>
+    <p class="lede">9 tabelas, 2 enums nativos, cadastro de cliente por link mágico. Cada decisão tem fundamento técnico ou legal.</p>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card">
+        <div class="tag tag-green">Enum nativo (CREATE TYPE)</div>
+        <p><code style="font-size:9px">status_pedido</code> — RECEBIDO, EM_PRODUCAO, PRONTO, ENTREGUE, CANCELADO. Integridade garantida pelo Postgres, não só pela aplicação.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-navy">Cliente + link mágico</div>
+        <p><code style="font-size:9px">cliente</code> e <code style="font-size:9px">magic_link_token</code> são novas nesta revisão — o cliente autentica sem senha e volta depois para ver o status do pedido.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-coral">Cor — cadastro livre</div>
+        <p>Tabela <code style="font-size:9px">cor</code> cadastrada e editada pela Tica pelo painel, sem depender de deploy — mesmo padrão usado em outros projetos do time.</p>
+      </div>
+      <div class="card">
+        <div class="tag tag-gold">Cliques com hash de IP</div>
+        <p><code style="font-size:9px">evento_clique</code> guarda <code style="font-size:9px">ip_hash</code>, nunca o IP puro — sustenta o limite de cliques por IP sem virar dado de rastreamento identificável.</p>
+      </div>
+    </div>
+    <div class="hl navy" style="font-size:10px">
+      <b>Correção desta revisão:</b> a versão anterior deixava <code style="font-size:9px">cor</code> e <code style="font-size:9px">tamanho</code> como texto livre tanto em <code style="font-size:9px">produto</code> quanto em <code style="font-size:9px">item_pedido</code>, sem deixar claro qual valor era o de referência e qual era a escolha do cliente. Nesta versão, <code style="font-size:9px">produto</code> guarda a cor/tamanho de referência exibidos na vitrine; <code style="font-size:9px">item_pedido</code> guarda a escolha real do cliente naquele pedido — que pode ser igual ou diferente.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">11 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 12 · Escolhas de escopo
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker navy">📏 Escopo</div>
+    <h2>O que entra e o que fica fora do MVP</h2>
+    <p class="lede">Um bom projeto não é o que tenta fazer tudo. É o que escolhe conscientemente o que não fazer agora.</p>
+    <div class="g2">
+      <div class="card" style="border-left:4px solid var(--green)">
+        <div class="tag tag-green">✅ Entra no MVP</div>
+        <div class="pill-row">
+          <span class="pill green">Vitrine digital</span>
+          <span class="pill green">Sacola + item personalizado</span>
+          <span class="pill green">Cadastro do cliente (link mágico)</span>
+          <span class="pill green">Endereço completo + ViaCEP</span>
+          <span class="pill green">Pedido no WhatsApp</span>
+          <span class="pill green">Painel admin (login por senha)</span>
+          <span class="pill green">5 status + estimativa de prazo</span>
+          <span class="pill green">Lembrete por e-mail (5 dias)</span>
+          <span class="pill green">Cadastro de cor</span>
+          <span class="pill green">Consentimento LGPD</span>
+          <span class="pill green">Indicadores básicos</span>
+          <span class="pill green">Docker + CI/CD</span>
+        </div>
+      </div>
+      <div class="card" style="border-left:4px solid var(--coral)">
+        <div class="tag tag-coral">🚫 Fora do escopo</div>
+        <div class="pill-row">
+          <span class="pill coral">Pagamento online</span>
+          <span class="pill coral">Cálculo automático de frete</span>
+          <span class="pill coral">Chat próprio na plataforma</span>
+          <span class="pill coral">Rastreamento de entrega em tempo real</span>
+          <span class="pill coral">Login de cliente com senha</span>
+          <span class="pill coral">Múltiplos endereços salvos</span>
+          <span class="pill coral">IA/ML avançado</span>
+        </div>
+      </div>
+    </div>
+    <div class="hl" style="margin-top:10px;font-size:10px">
+      <b>Escopo cresceu nesta revisão:</b> cadastro por link mágico, endereço completo, lembrete por e-mail e item personalizado somam 2 tabelas novas, uma segunda trilha de autenticação e um job agendado — vale confirmar com a disciplina se ainda cabe no prazo do semestre.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">12 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 13 · LGPD
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker navy">🔒 LGPD</div>
+    <h2>Privacidade por design</h2>
+    <p class="lede">Nome, CEP e histórico de pedido são dados pessoais (Lei 13.709/2018), mesmo em um negócio autônomo pequeno. Guardar no banco não é o problema — tratar sem base legal, aviso e controle do cliente, é.</p>
+    <div class="g4" style="margin-bottom:12px">
+      <div class="card"><div class="card-title">✅ Consentimento explícito</div><p>Checkbox não pré-marcado antes de "Solicitar Encomenda", com data/hora registrada.</p></div>
+      <div class="card"><div class="card-title">📄 Aviso de privacidade</div><p>Texto curto na vitrine: quais dados são coletados, pra quê, por quanto tempo, e como pedir exclusão.</p></div>
+      <div class="card"><div class="card-title">🔒 Minimização, redefinida</div><p>Cadastro do cliente e endereço completo passaram a ser necessários (não opcionais) para o produto funcionar como pedido agora. Minimização continua valendo — só não coletar o que o cliente não pediu para ser coletado.</p></div>
+      <div class="card"><div class="card-title">🚦 Cliques com limite</div><p>Limite de cliques por IP (com hash), sem exigir login nem captcha do cliente.</p></div>
+    </div>
+    <div class="hl">
+      <b>Retenção ainda em aberto — e mais urgente agora:</b> com conta de cliente persistente entre pedidos, por quanto tempo manter e-mail, endereço e histórico precisa ser combinado com a Tica antes de decidir arbitrariamente.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">13 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 14 · Painel x cliente + dados
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">⚙️ Por dentro do sistema</div>
+    <h2>Painel administrativo, cliente e dados</h2>
+    <p class="lede">Dois tipos de acesso: a Tica com senha, o cliente com link mágico. Os cliques e pedidos viram indicadores agregados, sem expor dado individual.</p>
+    <div class="g3">
+      <div class="card"><div class="card-title">👤 Painel da Tica (ADMIN)</div><p>Login por senha + JWT. Cadastra produtos e cores, ativa/inativa itens, acompanha e atualiza pedidos, recebe lembrete de pedidos parados.</p></div>
+      <div class="card"><div class="card-title">👥 Cliente</div><p>Navega na vitrine sem conta. Ao montar a sacola, cadastra e-mail e autentica por link mágico — depois disso, acompanha o status do próprio pedido logado.</p></div>
+      <div class="card"><div class="card-title">🐍 Dados (Python)</div><p>Mais procurados, taxa de conversão e previsão de demanda — a partir dos mesmos cliques e pedidos que a vitrine já registra.</p></div>
+    </div>
+    <div class="hl navy" style="margin-top:10px">
+      <b>Privacidade nos indicadores:</b> os relatórios usam contagens e médias por categoria/região, não o histórico individual de uma pessoa.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">14 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 15 · Ajustes que encontramos
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">🧭 Revisando o que recebemos</div>
+    <h2>Ajustes que encontramos e como resolvemos</h2>
+    <p class="lede">Ao revisar o material anterior, encontramos pontos que ainda precisavam de uma decisão. Resolver isso mostra que entendemos o projeto de verdade.</p>
+    <div class="card" style="margin-bottom:8px"><div class="card-title">1 · O pedido "sumia" depois do WhatsApp</div><p>Criamos um status pro pedido dentro do sistema (Recebido → Em produção → Pronto → Entregue + Cancelado). <b>Por quê:</b> resolve a dor que o próprio cliente relatou — não saber em que pé está a encomenda.</p></div>
+    <div class="card" style="margin-bottom:8px"><div class="card-title">2 · Cor e tamanho ambíguos entre produto e pedido</div><p>Separamos claramente: <code style="font-size:9px">produto</code> guarda cor/tamanho de referência (o que aparece na vitrine); <code style="font-size:9px">item_pedido</code> guarda a escolha real do cliente. <b>Por quê:</b> evita não saber qual valor é o "de verdade" quando os dois divergem.</p></div>
+    <div class="card" style="margin-bottom:8px"><div class="card-title">3 · Qualquer um podia "sujar" as estatísticas de clique</div><p>Colocamos um limite de cliques por IP (com hash) em um curto intervalo, sem exigir login nem captcha. <b>Por quê:</b> protege a qualidade dos números de dados, sem criar fricção pra quem só navega.</p></div>
+    <div class="card"><div class="card-title">4 · Cancelamento sem prazo definido</div><p>A pendência ficou registrada desde a v1: quando cancelar, e se existia algum prazo automático. Agora existe uma regra: 5 dias parado em RECEBIDO dispara e-mail de lembrete para a Tica — a decisão continua manual, mas deixa de depender só da memória dela. <b>Por quê:</b> fecha uma pendência que já estava documentada, sem tirar o controle da Tica.</p></div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">15 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 16 · Status do projeto
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="slide-body">
+    <div class="kicker">📅 Onde estamos</div>
+    <h2>Status do projeto e próximos passos</h2>
+    <div class="g2" style="margin-bottom:12px">
+      <div class="card" style="border-top:4px solid var(--green)">
+        <div class="card-title">✅ Já decidimos</div>
+        <ul>
+          <li>Arquitetura geral do sistema</li>
+          <li>Modelagem do banco (schema v2)</li>
+          <li>Máquina de status do pedido</li>
+          <li>Consentimento e aviso de privacidade (LGPD)</li>
+        </ul>
+      </div>
+      <div class="card" style="border-top:4px solid var(--coral)">
+        <div class="card-title">🕓 Ainda falta</div>
+        <ul>
+          <li>Definir onde hospedar o backend Java</li>
+          <li>Receber o acervo de fotos oficiais dos produtos</li>
+          <li>Definir pipeline de CI/CD ponta a ponta (tema central da disciplina)</li>
+          <li>Validar prazo de cancelamento e retenção de dados com a Tica</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hl gold" style="text-align:center;font-size:11px">
+      🧵 <b>Ponto da linha:</b> a base do sistema já está desenhada — a próxima etapa é vestir essa estrutura com a identidade visual e o acervo reais da Tica, item por item.
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">16 / 17</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SLIDE 17 · Obrigado
+══════════════════════════════════════════════════════════════════ -->
+<div class="slide">
+  <div style="height:6px;background:linear-gradient(90deg,var(--navy) 0 34%,var(--coral) 34% 62%,var(--gold) 62% 100%);flex:none"></div>
+  <div class="cover-body" style="justify-content:center;align-items:center;text-align:center">
+    <div class="cover-accent"></div>
+    <div class="cover-eyebrow" style="text-align:center">🙌 Obrigado!</div>
+    <div class="cover-title" style="font-size:36px">Do caderno de anotações<br>pra tela da vitrine</div>
+    <div class="cover-desc" style="max-width:520px;margin:0 auto;font:italic 500 12px/1.6 var(--serif);color:var(--coral)">
+      É essa a transformação que estamos construindo — sem tirar da Tica o que ela faz de melhor: o trabalho feito à mão, com cuidado, peça por peça.
+    </div>
+    <div style="margin-top:22px;background:var(--coral);color:white;display:inline-block;padding:9px 20px;border-radius:99px;font-size:11px;font-weight:700">Dúvidas do grupo? Vamos discutir 🧶</div>
+  </div>
+  <div class="slide-footer">
+    <div class="footer-label"><b>Tica Artesanato</b> · Mapa de execução do projeto</div>
+    <div class="page-badge">17 / 17</div>
+  </div>
+</div>
+
+</body>
+</html>
